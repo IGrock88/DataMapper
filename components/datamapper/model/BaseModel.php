@@ -17,13 +17,16 @@ abstract class BaseModel
 
     /**
      * Массив с элементами полей разрешенных для заполнения в свойства модели
-     * @property array $safeProperties массив
+     * @var array $safeProperties массив
      */
     protected $safeProperties = [];
 
     /**
      * BaseModel constructor.
+     *
+     *
      * @param array $properties
+     * ассоциативный массив, ключи - имена столбцов таблицы бд, значения - значения этих стобцов
      */
     public function __construct(array $properties)
     {

@@ -9,10 +9,21 @@
 namespace components\datamapper\adapter;
 
 
+/**
+ * Class UserAdapter
+ * @package components\datamapper\adapter
+ */
 class UserAdapter extends AbstractAdapter
 {
+    /**
+     * @var string
+     */
     private $tableName = 'user';
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function selectOne($id)
     {
         $this->db->connect();

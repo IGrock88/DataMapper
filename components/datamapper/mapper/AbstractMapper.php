@@ -20,10 +20,6 @@ use components\datamapper\adapter\AbstractAdapter;
  */
 abstract class AbstractMapper
 {
-    /**
-     * @property AbstractAdapter $adapter
-     * @property IdentityMap $identity
-     */
     protected $adapter;
 
     protected $identity;
@@ -40,7 +36,7 @@ abstract class AbstractMapper
     }
 
     /**
-     * Поиск модели по ид
+     * Поиск модели по id
      * @param $id
      * @return mixed
      */

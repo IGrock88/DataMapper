@@ -32,7 +32,7 @@ abstract class AbstractAdapter
     }
 
     /**
-     * Получение строки из базы данных по ид
+     * Получение строки из базы данных по id
      * @param $id
      * @return mixed
      */

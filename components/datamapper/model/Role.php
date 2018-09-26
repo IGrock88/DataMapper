@@ -9,6 +9,10 @@
 namespace components\datamapper\model;
 
 
+/**
+ * Class Role
+ * @package components\datamapper\model
+ */
 class Role extends BaseModel
 {
 

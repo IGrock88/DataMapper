@@ -9,11 +9,22 @@
 namespace components\datamapper\adapter;
 
 
+/**
+ * Class RoleAdapter
+ * @package components\datamapper\adapter
+ */
 class RoleAdapter extends AbstractAdapter
 {
 
+    /**
+     * @var string
+     */
     private $tableName = 'user_role';
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function selectOne($id)
     {
         $this->db->connect();

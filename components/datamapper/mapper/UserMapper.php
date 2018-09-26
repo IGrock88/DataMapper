@@ -20,6 +20,8 @@ class UserMapper extends AbstractMapper
     const MODEL_CLASS_NAME = 'components\datamapper\model\User';
 
     /**
+     * Поиск модели по id
+     *
      * @param $id
      * @return User
      */
@@ -44,6 +46,7 @@ class UserMapper extends AbstractMapper
     }
 
     /**
+     * Создаем объект User
      * @param array $rowUser
      * @return User
      */

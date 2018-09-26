@@ -13,6 +13,10 @@ use components\App;
 use components\datamapper\adapter\RoleAdapter;
 use components\datamapper\mapper\RoleMapper;
 
+/**
+ * Class User
+ * @package components\datamapper\model
+ */
 class User extends BaseModel
 {
 
@@ -24,12 +28,17 @@ class User extends BaseModel
      * @property string $prim
      * @property integer $id_role
      *
-     * @property Role $role
      */
 
     protected $safeProperties = ['id', 'login', 'name', 'id_role', 'role'];
+    /**
+     * @var Role $role
+     */
     private $role = null;
 
+    /**
+     * @return Role|null
+     */
     public function getRole()
     {
         if($this->role == null){

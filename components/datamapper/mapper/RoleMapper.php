@@ -23,6 +23,7 @@ class RoleMapper extends AbstractMapper
     const MODEL_CLASS_NAME = 'components\datamapper\model\Role';
 
     /**
+     * Поиск модели по id
      * @param $id
      * @return Role
      */
@@ -46,6 +47,7 @@ class RoleMapper extends AbstractMapper
     }
 
     /**
+     * Создаем объект модели Role
      * @param array $roles
      * @return Role
      */
