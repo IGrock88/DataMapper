@@ -11,15 +11,31 @@ namespace components\datamapper\adapter;
 
 use components\db\AbstractDb;
 
+/**
+ * Class AbstractAdapter
+ * @package components\datamapper\adapter
+ */
 abstract class AbstractAdapter
 {
+    /**
+     * @var AbstractDb
+     */
     protected $db;
 
+    /**
+     * AbstractAdapter constructor.
+     * @param AbstractDb $db
+     */
     public function __construct(AbstractDb $db)
     {
         $this->db = $db;
     }
 
+    /**
+     * Получение строки из базы данных по ид
+     * @param $id
+     * @return mixed
+     */
     abstract public function selectOne($id);
 
 }

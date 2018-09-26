@@ -8,12 +8,23 @@
 
 namespace components\datamapper\model;
 
-
+/**
+ * Класс базовой модели, от неё должны наследоваться все доменные модели
+ * @package components\datamapper\model
+ */
 abstract class BaseModel
 {
 
+    /**
+     * Массив с элементами полей разрешенных для заполнения в свойства модели
+     * @property array $safeProperties массив
+     */
     protected $safeProperties = [];
 
+    /**
+     * BaseModel constructor.
+     * @param array $properties
+     */
     public function __construct(array $properties)
     {
         foreach ($properties as $name => $value){
@@ -21,6 +32,10 @@ abstract class BaseModel
         }
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     */
     final public function __get($name)
     {
         if (empty($this->$name)){
@@ -35,6 +50,10 @@ abstract class BaseModel
 
     }
 
+    /**
+     * @param $name
+     * @param $value
+     */
     final public function __set($name, $value)
     {
         if ($this->isSafeProperty($name)){
@@ -43,6 +62,10 @@ abstract class BaseModel
 
     }
 
+    /**
+     * @param $name
+     * @return bool
+     */
     private function isSafeProperty($name)
     {
         return in_array($name, $this->safeProperties);

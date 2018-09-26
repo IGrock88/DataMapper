@@ -13,10 +13,19 @@ use components\datamapper\model\BaseModel;
 use components\datamapper\model\Role;
 use components\datamapper\model\User;
 
+/**
+ * Class RoleMapper
+ * @package components\datamapper\mapper
+ */
 class RoleMapper extends AbstractMapper
 {
+
     const MODEL_CLASS_NAME = 'components\datamapper\model\Role';
 
+    /**
+     * @param $id
+     * @return Role
+     */
     public function findOne($id): Role
     {
         $rowRoles = $this->adapter->selectOne($id);
@@ -36,6 +45,10 @@ class RoleMapper extends AbstractMapper
 
     }
 
+    /**
+     * @param array $roles
+     * @return Role
+     */
     private function mapToRole(array $roles): Role
     {
         return new Role($roles);

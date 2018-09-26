@@ -11,21 +11,39 @@ namespace components\datamapper\mapper;
 
 
 use components\datamapper\identity\IdentityMap;
-use components\datamapper\model\BaseModel;
 use components\datamapper\adapter\AbstractAdapter;
 
 
+/**
+ * Class AbstractMapper
+ * @package components\datamapper\mapper
+ */
 abstract class AbstractMapper
 {
+    /**
+     * @property AbstractAdapter $adapter
+     * @property IdentityMap $identity
+     */
     protected $adapter;
+
     protected $identity;
 
+    /**
+     * AbstractMapper constructor.
+     * @param AbstractAdapter $adapter
+     * @param IdentityMap $identity
+     */
     public function __construct(AbstractAdapter $adapter, IdentityMap $identity)
     {
         $this->adapter = $adapter;
         $this->identity = $identity;
     }
 
+    /**
+     * Поиск модели по ид
+     * @param $id
+     * @return mixed
+     */
     abstract public function findOne($id);
 
 }
