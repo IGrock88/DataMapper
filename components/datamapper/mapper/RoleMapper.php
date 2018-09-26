@@ -11,17 +11,33 @@ namespace components\datamapper\mapper;
 
 use components\datamapper\model\BaseModel;
 use components\datamapper\model\Role;
+use components\datamapper\model\User;
 
 class RoleMapper extends AbstractMapper
 {
+    const MODEL_CLASS_NAME = 'components\datamapper\model\Role';
 
-    public function findOne($id): BaseModel
+    public function findOne($id): Role
     {
-        // TODO: Implement findOne() method.
+        $rowRoles = $this->adapter->selectOne($id);
+
+        if ($roleModel = $this->identity->get(self::MODEL_CLASS_NAME, $id)){
+            return $roleModel;
+        }
+
+        if ($rowRoles != null){
+            $roleModel = $this->mapToRole($rowRoles);
+            $this->identity->add($roleModel);
+            return $roleModel;
+        }
+        else {
+            throw new \Error('user not found');
+        }
+
     }
 
-    private function mapToRole(array $role): Role
+    private function mapToRole(array $roles): Role
     {
-        return new Role($role);
+        return new Role($roles);
     }
 }

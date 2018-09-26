@@ -16,6 +16,6 @@ class Role extends BaseModel
      * @property integer $id_role
      * @property string $role
      */
-
+    protected $safeProperties = ['id', 'role'];
 
 }

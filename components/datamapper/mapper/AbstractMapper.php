@@ -10,6 +10,7 @@ namespace components\datamapper\mapper;
 
 
 
+use components\datamapper\identity\IdentityMap;
 use components\datamapper\model\BaseModel;
 use components\datamapper\adapter\AbstractAdapter;
 
@@ -17,12 +18,14 @@ use components\datamapper\adapter\AbstractAdapter;
 abstract class AbstractMapper
 {
     protected $adapter;
+    protected $identity;
 
-    public function __construct(AbstractAdapter $adapter)
+    public function __construct(AbstractAdapter $adapter, IdentityMap $identity)
     {
         $this->adapter = $adapter;
+        $this->identity = $identity;
     }
 
-    abstract public function findOne($id): BaseModel;
+    abstract public function findOne($id);
 
 }

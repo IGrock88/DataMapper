@@ -14,10 +14,8 @@ use components\datamapper\model\BaseModel;
 class Render
 {
 
-    public function render(BaseModel $baseModel)
+    public function render(BaseModel $baseModel = null)
     {
-        foreach ($baseModel as $name => $value){
-            echo "$name - $value<br>";
-        }
+        include 'view/base.php';
     }
 }

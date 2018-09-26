@@ -9,19 +9,25 @@
 namespace components\datamapper\mapper;
 
 
-
-use components\datamapper\model\BaseModel;
 use components\datamapper\model\User;
 
 class UserMapper extends AbstractMapper
 {
+    const MODEL_CLASS_NAME = 'components\datamapper\model\User';
 
-    public function findOne($id): BaseModel
+    public function findOne($id): User
     {
-
         $rowUser = $this->adapter->selectOne($id);
+
+        if ($userModel = $this->identity->get(self::MODEL_CLASS_NAME, $id)){
+            return $userModel;
+        }
+
         if ($rowUser != null){
-            return $this->mapToUser($rowUser);
+            $userModel = $this->mapToUser($rowUser);
+            $this->identity->add($userModel);
+            echo 'db';
+            return $userModel;
         }
         else {
             throw new \Error('user not found');

@@ -17,7 +17,7 @@ class RoleAdapter extends AbstractAdapter
     public function selectOne($id)
     {
         $this->db->connect();
-        $result = $this->db->getRows("select * from $this->tableName where id_role = ?", [$id])[0];
+        $result = $this->db->getRows("select * from $this->tableName where id = ?", [$id])[0];
         return $result;
     }
 }

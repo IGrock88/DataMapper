@@ -11,7 +11,7 @@ namespace components\datamapper\adapter;
 
 class UserAdapter extends AbstractAdapter
 {
-    private $tableName = 'users';
+    private $tableName = 'user';
 
     public function selectOne($id)
     {

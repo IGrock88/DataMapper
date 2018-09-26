@@ -12,38 +12,40 @@ namespace components\datamapper\model;
 abstract class BaseModel
 {
 
-    protected $safeAttributes;
+    protected $safeProperties = [];
 
-    public function __construct(array $attributes)
+    public function __construct(array $properties)
     {
-        foreach ($attributes as $name => $value){
+        foreach ($properties as $name => $value){
             $this->$name = $value;
         }
     }
 
-    public function __get($name)
+    final public function __get($name)
     {
         if (empty($this->$name)){
             throw new \Error('variable ' . $name . ' not defined');
         }
-        return $this->$name;
+        if ($this->isSafeProperty($name)){
+            return $this->$name;
+        }
+        else {
+            throw new \Error($name . ' is not safe property');
+        }
+
     }
 
-//    public function __set($name, $value)
-//    {
-//        if (in_array($name, $this->safeAttributes)){
-//            $this->$name = $value;
-//        }
-//        else {
-//            throw new \Error('attribute ' . $name . ' is read only');
-//        }
-//
-//    }
-
-    public function setSafeAttributes()
+    final public function __set($name, $value)
     {
+        if ($this->isSafeProperty($name)){
+            $this->$name = $value;
+        }
 
     }
 
+    private function isSafeProperty($name)
+    {
+        return in_array($name, $this->safeProperties);
+    }
 
 }
