@@ -21,14 +21,10 @@ class App
     public static $identity;
     public static $db;
 
-    public function __construct()
+    public function init()
     {
         self::$identity = new IdentityMap();
         self::$db = new DB();
-    }
-
-    public function init()
-    {
         $this->loadUser();
     }
 
