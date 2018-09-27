@@ -12,14 +12,14 @@ namespace components\datamapper\model;
 /**
  * Class Role
  * @package components\datamapper\model
+ *
+ * @property integer $id_role
+ * @property string $role
  */
 class Role extends BaseModel
 {
 
-    /**
-     * @property integer $id_role
-     * @property string $role
-     */
+
     protected $safeProperties = ['id', 'role'];
 
 }

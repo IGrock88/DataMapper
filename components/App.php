@@ -43,6 +43,8 @@ class App
 
             // ленивая загрузка
             $user->getRole();
+
+
         }
 
 

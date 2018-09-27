@@ -16,19 +16,19 @@ use components\datamapper\mapper\RoleMapper;
 /**
  * Class User
  * @package components\datamapper\model
+ *
+ * @property integer $id
+ * @property string $login
+ * @property string $name
+ * @property string $pass
+ * @property integer $id_role
+ *
  */
+
 class User extends BaseModel
 {
 
-    /**
-     * @property integer $id
-     * @property string $login
-     * @property string $name
-     * @property string $pass
-     * @property string $prim
-     * @property integer $id_role
-     *
-     */
+
 
     protected $safeProperties = ['id', 'login', 'name', 'id_role', 'role'];
     /**
