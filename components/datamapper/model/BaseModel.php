@@ -63,7 +63,6 @@ abstract class BaseModel
         if ($this->isSafeProperty($name)){
             $this->$name = $value;
         }
-
     }
 
     /**
