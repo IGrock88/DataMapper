@@ -27,19 +27,18 @@ class UserMapper extends AbstractMapper
      */
     public function findOne($id): User
     {
-        $rowUser = $this->adapter->selectOne($id);
-
-        if ($userModel = $this->identity->get(self::MODEL_CLASS_NAME, $id)){
+        if ($userModel = $this->identity->get(self::MODEL_CLASS_NAME, $id)) {
             return $userModel;
         }
 
-        if ($rowUser != null){
+        $rowUser = $this->adapter->selectOne($id);
+
+        if ($rowUser != null) {
             $userModel = $this->mapToUser($rowUser);
             $this->identity->add($userModel);
             echo 'Запрос в БД<br>';
             return $userModel;
-        }
-        else {
+        } else {
             throw new \Error('user not found');
         }
 

@@ -25,8 +25,9 @@ abstract class BaseModel
      * BaseModel constructor.
      *
      *
-     * @param array $properties
+     * @param array $properties <p>
      * ассоциативный массив, ключи - имена столбцов таблицы бд, значения - значения этих стобцов
+     * </p>
      */
     public function __construct(array $properties)
     {

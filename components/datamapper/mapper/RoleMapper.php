@@ -29,18 +29,17 @@ class RoleMapper extends AbstractMapper
      */
     public function findOne($id): Role
     {
-        $rowRoles = $this->adapter->selectOne($id);
-
-        if ($roleModel = $this->identity->get(self::MODEL_CLASS_NAME, $id)){
+        if ($roleModel = $this->identity->get(self::MODEL_CLASS_NAME, $id)) {
             return $roleModel;
         }
 
-        if ($rowRoles != null){
+        $rowRoles = $this->adapter->selectOne($id);
+
+        if ($rowRoles != null) {
             $roleModel = $this->mapToRole($rowRoles);
             $this->identity->add($roleModel);
             return $roleModel;
-        }
-        else {
+        } else {
             throw new \Error('user not found');
         }
 
